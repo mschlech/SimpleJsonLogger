@@ -1,10 +1,10 @@
-package main
+package simpleJsonLogger
 
 import (
+	"github.com/mschlech/SimpleJsonLogger/private/app/simpleJsonLogger"
 	log "github.com/sirupsen/logrus"
-	"github.com/urfave/cli"
+	"gopkg.in/urfave/cli.v1"
 	"os"
-	"github.com/mschlech/SimpleJsonLogger/private/app/simpleJsonLogger/
 )
 
 func main() {
@@ -14,6 +14,9 @@ func main() {
 	app.Usage = "Start json logger"
 
 	log.WithFields(log.Fields{"package": "main"}).Info("Starting jsonLogger")
-	return nil
-	os.Args()
+
+	app.Action = func() error {
+		return simpleJsonLogger.StartJsonLogger()
+	}
+	app.Run(os.Args)
 }
