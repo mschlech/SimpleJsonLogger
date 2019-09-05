@@ -11,7 +11,7 @@ APPS := $(shell ls -1 cmd)
 
 PRIVATE_LIB=$(shell test -d private/lib && echo private/lib)
 
-all:: init test
+all:: init
 
 init:
 	mkdir -p bin container gen/lib/grpc
@@ -35,6 +35,8 @@ endif
 endef
 
 $(foreach _,$(APPS),$(eval $(call make-cmd-target,$_)))
+
+all:: test
 
 build:
 	$(GOBUILD) -o $(BINARY_NAME) -v

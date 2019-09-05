@@ -1,4 +1,4 @@
-package simpleJsonLogger
+package main
 
 import (
 	"github.com/mschlech/SimpleJsonLogger/private/app/simple-json-logger/lib"
@@ -15,7 +15,7 @@ func main() {
 
 	log.WithFields(log.Fields{"package": "main"}).Info("Starting jsonLogger")
 
-	app.Action = func() error {
+	app.Action = func(c *cli.Context) error {
 		return lib.StartJsonLogger()
 	}
 	app.Run(os.Args)
