@@ -1,4 +1,4 @@
-package simpleJsonLogger
+package lib
 
 import "log"
 
