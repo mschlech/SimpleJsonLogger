@@ -5,18 +5,19 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 
-HAVE_DOCKER=$(shell docker version >/dev/null 2>&1 && echo have_docke)
+HAVE_DOCKER=$(shell docker version >/dev/null 2>&1 && echo have_docker)
 
 APPS := $(shell ls -1 cmd)
+
+PRIVATE_LIB=$(shell test -d private/lib && echo private/lib)
 
 all:: init test
 
 init:
 	mkdir -p bin container gen/lib/grpc
 
-
 define make-cmd-target =
-bin/$1: $(shell find cmd private/app/$1 private/lib gen -name '*.go')
+bin/$1: $(shell find cmd private/app/$1 $(PRIVATE_LIB) gen -name '*.go')
 	$(GOBUILD) -o bin/$1 -v ./cmd/$1
 all:: bin/$1
 
