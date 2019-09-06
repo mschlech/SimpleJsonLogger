@@ -10,7 +10,7 @@ require (
 	github.com/gobuffalo/makr v1.2.0 // indirect
 	github.com/gobuffalo/nulls v0.1.0 // indirect
 	github.com/gobuffalo/pop v4.11.6+incompatible // indirect
-	github.com/gorilla/mux v1.7.3 // indirect
+	github.com/gorilla/mux v1.7.3
 	github.com/jackc/pgx v3.5.0+incompatible // indirect
 	github.com/lib/pq v1.2.0 // indirect
 	github.com/markbates/goth v1.56.0 // indirect
