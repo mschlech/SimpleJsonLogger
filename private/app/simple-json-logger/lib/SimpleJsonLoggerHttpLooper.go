@@ -2,7 +2,6 @@ package lib
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gorilla/mux"
 	"io/ioutil"
 	"log"
@@ -27,8 +26,6 @@ func restApiMap() {
 
 func encodePostRequestFromSource(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-
-	json.NewDecoder(r.Body)
 	// response Body
 	responseBody, err := ioutil.ReadAll(r.Body)
 
@@ -38,11 +35,11 @@ func encodePostRequestFromSource(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	fmt.Print(data)
+	log.Print(data)
 }
 
 func healtCheck(responseWriter http.ResponseWriter, r *http.Request) {
 
-	fmt.Printf("healthCheck=", responseWriter, r)
+	log.Print("healthCheck=", responseWriter, r)
 	return
 }
