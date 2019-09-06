@@ -8,3 +8,11 @@ import (
 func TestStartJsonLogger(t *testing.T) {
 	log.Print("Test passed")
 }
+
+func encodePostRequestFromSourceTest() {
+
+}
+
+func healtCheckTest() {
+
+}
