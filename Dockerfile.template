@@ -1,5 +1,0 @@
-FROM scratch
-
-ADD bin/APP /APP
-
-ENTRYPOINT ["/APP"]
