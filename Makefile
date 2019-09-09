@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+export GO111MODULE=on
 
 GOCMD=go
 GOBUILD=$(GOCMD) build
@@ -18,9 +19,11 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 GOGET=$(GOCMD) get
+GOINSTALL=$(GOCMD) install
+BINARY=simple-json-logger
 
 # The binary to build (just the basename).
-BIN := simple-json-logger
+BIN := SimpleJsonLogger
 
 # Where to push the docker image.
 REGISTRY ?= mschlech
@@ -206,6 +209,9 @@ dep:
 	$(GOGET) github.com/gorilla/mux
 
 clean: container-clean bin-clean
+
+executable: $(GOINSTALL) cmd/$(BINARY)/$(BINARY).go
+
 
 container-clean:
 	rm -rf .container-* .dockerfile-* .push-*
